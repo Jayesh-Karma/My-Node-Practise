@@ -1,0 +1,60 @@
+Streams in Node.js are a powerful concept for handling data in a more efficient and scalable manner. They allow you to read from or write to a data source continuously, in chunks, rather than loading the entire data into memory at once. This is especially important when dealing with large files or handling data from multiple sources in real-time.
+
+There are four types of streams in Node.js:
+
+Readable Streams:
+
+Readable streams allow you to read data from a source, such as a file, an HTTP request, or a buffer.
+They emit events like data when new data is available and end when the stream has been fully read.
+Example use cases include reading large files or processing data from an HTTP request.
+Writable Streams:
+
+Writable streams allow you to write data to a destination, such as a file, an HTTP response, or a buffer.
+They emit events like drain when the buffer is empty and ready to accept more data, and finish when all data has been written.
+Example use cases include writing large files or sending data over an HTTP response.
+Duplex Streams:
+
+Duplex streams are both readable and writable. They allow you to both read from and write to a source.
+An example is a TCP socket where you can both send and receive data.
+Transform Streams:
+
+Transform streams are a special type of duplex stream that allows you to modify or transform data as it passes through the stream.
+Example use cases include data compression or encryption.
+Here's an example of reading a file using a readable stream:
+
+javascript
+Copy code
+const fs = require('fs');
+
+const readableStream = fs.createReadStream('input.txt');
+
+readableStream.on('data', (chunk) => {
+  console.log(`Received ${chunk.length} bytes of data.`);
+});
+
+readableStream.on('end', () => {
+  console.log('End of file reached.');
+});
+And here's an example of writing to a file using a writable stream:
+
+javascript
+Copy code
+const fs = require('fs');
+
+const writableStream = fs.createWriteStream('output.txt');
+
+writableStream.write('Hello, world!', 'utf8', () => {
+  console.log('Data written to file.');
+});
+
+writableStream.end(() => {
+  console.log('End of writing.');
+});
+Node.js provides the stream module in its core library, which makes working with streams straightforward. Streams are widely used for tasks like reading and writing files, handling network traffic, and processing large datasets.
+
+Using streams can significantly improve the efficiency and performance of your Node.js applications, especially when dealing with large or continuous streams of data.
+
+
+
+
+

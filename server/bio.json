@@ -1,0 +1,17 @@
+[{
+    "employee_id": "E1234",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john.doe@example.com",
+    "department": "Marketing",
+    "position": "Senior Marketing Manager",
+    "phone": "+1-555-555-5555",
+    "address": {
+      "street": "123 Main Street",
+      "city": "Anytown",
+      "state": "CA",
+      "postal_code": "12345",
+      "country": "USA"
+    }
+  }
+]
